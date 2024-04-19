@@ -1,0 +1,7 @@
+[
+  { "username": "giulia.ricci", "password": "password1", "id": 1 },
+  { "username": "marco.rossi", "password": "password2", "id": 2 },
+  { "username": "francesca.bianchi", "password": "password3", "id": 3 },
+  { "username": "lorenzo.deluca", "password": "password4", "id": 4 },
+  { "username": "chiara.galli", "password": "password5", "id": 5 }
+]

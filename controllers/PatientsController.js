@@ -1,0 +1,75 @@
+const Patient = require("../models/PatientModel.js");
+
+require("dotenv").config();
+
+// TODO: Remove password from the response?
+exports.getPatient = async (req, res) => {
+  try {
+    const userId = req.decoded.id;
+    const patient = await Patient.findOne({ _id: userId });
+
+    res.status(200).json({ patient: patient, errorMessage: null });
+  } catch (error) {
+    res.status(400).send("Bad Request");
+  }
+};
+
+// TODO: Remove password from the response?
+exports.getPatientID = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const patient = await Patient.findOne({ _id: userId });
+
+    res.status(200).json({ patient: patient, errorMessage: null });
+  } catch (error) {
+    res.status(400).send("Bad Request");
+  }
+};
+
+exports.getAllPatients = async (req, res) => {
+  try {
+    const patients = await Patient.find();
+
+    res.status(200).json({ patients: patients, errorMessage: null });
+  } catch (error) {
+    res.status(400).send("Bad Request");
+  }
+};
+
+exports.addPatient = async (req, res) => {
+  try {
+    const {
+      username,
+      password,
+      "first-name": firstName,
+      "last-name": lastName,
+      "birth-date": birthDate,
+      weight,
+      height,
+    } = req.body;
+
+    const patient = {
+      username,
+      password,
+      "first-name": firstName,
+      "last-name": lastName,
+      "birth-date": birthDate,
+      weight: {
+        value: weight.value,
+        unit: weight.unit,
+      },
+      height: {
+        value: height.value,
+        unit: height.unit,
+      },
+    };
+
+    const newPatient = new Patient(patient);
+    await newPatient.save();
+
+    res.status(200).json({ patient: newPatient, errorMessage: null });
+  } catch (error) {
+    console.error("Error adding patient:", error);
+    res.status(400).json({ patient: null, errorMessage: "Bad Request" });
+  }
+};

@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "first-name": "",
+    "last-name": "",
+    "birth-date": "1990-03-15",
+    "height": {
+      "unit": "centimeters",
+      "value": 165
+    },
+    "weight": {
+      "unit": "kilograms",
+      "value": 55
+    }
+  },
+  {
+    "id": 2,
+    "first-name": "",
+    "last-name": "",
+    "birth-date": "1985-07-20",
+    "height": {
+      "unit": "centimeters",
+      "value": 180
+    },
+    "weight": {
+      "unit": "kilograms",
+      "value": 75
+    }
+  },
+  {
+    "id": 3,
+    "first-name": "",
+    "last-name": "",
+    "birth-date": "1978-11-10",
+    "height": {
+      "unit": "centimeters",
+      "value": 170
+    },
+    "weight": {
+      "unit": "kilograms",
+      "value": 80
+    }
+  },
+  {
+    "id": 4,
+    "first-name": "",
+    "last-name": "",
+    "birth-date": "2000-05-05",
+    "height": {
+      "unit": "centimeters",
+      "value": 155
+    },
+    "weight": {
+      "unit": "kilograms",
+      "value": 50
+    }
+  },
+  {
+    "id": 5,
+    "first-name": "",
+    "last-name": "",
+    "birth-date": "1995-12-25",
+    "height": {
+      "unit": "centimeters",
+      "value": 160
+    },
+    "weight": {
+      "unit": "kilograms",
+      "value": 65
+    }
+  }
+]
