@@ -7,8 +7,8 @@ exports.postResults = async (req, res) => {
   try {
     const result = req.body;
 
-    // Only for tests. Remove this line when the frontend is ready. The french dude already did this.
-    result.patient = { id: req.decoded.id };
+    // Only for tests. Remove this line when the frontend is ready.
+    // result.patient = { id: req.decoded.id };
 
     const newResult = new Result(result);
     await newResult.save();
