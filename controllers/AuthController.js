@@ -15,7 +15,7 @@ exports.getToken = async (req, res) => {
     }
 
     authenticated = true;
-    userId = patient._id;
+    userId = patient.id;
 
     const accessToken = jwt.sign({ id: userId }, process.env.SECRET, {
       expiresIn: "1h",

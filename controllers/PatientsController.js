@@ -2,11 +2,11 @@ const Patient = require("../models/PatientModel.js");
 
 require("dotenv").config();
 
-// TODO: Remove password from the response?
+// TODO: Remove password from the response and _id
 exports.getPatient = async (req, res) => {
   try {
     const userId = req.decoded.id;
-    const patient = await Patient.findOne({ _id: userId });
+    const patient = await Patient.findOne({ id: userId });
 
     res.status(200).json({ patient: patient, errorMessage: null });
   } catch (error) {
@@ -14,11 +14,11 @@ exports.getPatient = async (req, res) => {
   }
 };
 
-// TODO: Remove password from the response?
+// TODO: Remove password from the response and _id
 exports.getPatientID = async (req, res) => {
   try {
     const userId = req.params.id;
-    const patient = await Patient.findOne({ _id: userId });
+    const patient = await Patient.findOne({ id: userId });
 
     res.status(200).json({ patient: patient, errorMessage: null });
   } catch (error) {
@@ -39,6 +39,7 @@ exports.getAllPatients = async (req, res) => {
 exports.addPatient = async (req, res) => {
   try {
     const {
+      id,
       username,
       password,
       "first-name": firstName,
@@ -49,6 +50,7 @@ exports.addPatient = async (req, res) => {
     } = req.body;
 
     const patient = {
+      id,
       username,
       password,
       "first-name": firstName,

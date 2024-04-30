@@ -25,7 +25,22 @@ exports.postResults = async (req, res) => {
 exports.getPatientsResults = async (req, res) => {
   try {
     const patientId = req.params.id;
-    const results = await Result.find({ "patient.id": patientId });
+    // const results = await Result.find({ "patient.id": patientId });
+
+    const allResults = await Result.find();
+    let results = []; // Array of results for the patient with the given id
+
+    allResults.forEach((result) => {
+      for (const key in result) {
+        if (
+          result[key] &&
+          result[key].patient &&
+          result[key].patient.id === patientId
+        ) {
+          results.push(result[key]);
+        }
+      }
+    });
 
     if (results.length === 0) {
       res.status(404).json({
