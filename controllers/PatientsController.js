@@ -75,3 +75,28 @@ exports.addPatient = async (req, res) => {
     res.status(400).json({ patient: null, errorMessage: "Bad Request" });
   }
 };
+
+exports.deletePatient = async (req, res) => {
+  try {
+    const patientId = req.params.id;
+
+    // Check if the patient exists
+    const patient = await Patient.findOne({ id: patientId });
+    if (!patient) {
+      return res
+        .status(404)
+        .json({ message: "Patient not found", errorMessage: null });
+    }
+
+    await Patient.findOneAndDelete({ id: patientId });
+
+    res
+      .status(200)
+      .json({
+        message: `Patient with ID ${patientId} deleted successfully`,
+        errorMessage: null,
+      });
+  } catch (error) {
+    res.status(400).send("Bad Request");
+  }
+};

@@ -49,5 +49,6 @@ router.get("/", verifyTokenUser, PatientsController.getPatient);
 router.get("/:id", verifyTokenDoctor, PatientsController.getPatientID);
 router.get("/id/all", verifyTokenDoctor, PatientsController.getAllPatients);
 router.post("/", verifyTokenDoctor, PatientsController.addPatient);
+router.delete("/:id", verifyTokenDoctor, PatientsController.deletePatient);
 
 module.exports = router;
